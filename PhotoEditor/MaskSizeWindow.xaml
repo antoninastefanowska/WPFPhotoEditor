@@ -1,0 +1,24 @@
+﻿<Window x:Class="PhotoEditor.MaskSizeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoEditor"
+        mc:Ignorable="d"
+        Title="Podaj rozmiar maski" SizeToContent="Height" Width="200" Loaded="Window_OnLoaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.ColumnSpan="2" Margin="5" Padding="5">Rozmiar maski:</Label>
+        <TextBox Grid.Row="1" x:Name="MaskSizeTextBox" Grid.ColumnSpan="2" Margin="5" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="ValidateInput" />
+        <Button Grid.Row="2" Margin="5" Padding="5" Click="ButtonCancel_OnClick">Anuluj</Button>
+        <Button Grid.Row="2" Grid.Column="1" Margin="5" Padding="5" Click="ButtonOK_OnClick">OK</Button>
+    </Grid>
+</Window>

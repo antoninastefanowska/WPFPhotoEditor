@@ -1,0 +1,28 @@
+﻿<Window x:Class="PhotoEditor.ColorPickWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoEditor"
+        mc:Ignorable="d"
+        Title="Wybierz kolor" SizeToContent="Height" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.ColumnSpan="2" Background="{Binding Brush}" BorderBrush="LightGray" BorderThickness="1" Padding="10" Margin="5" />
+        <TextBox Grid.Row="1" Text="{Binding Red, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="5" PreviewTextInput="ValidateInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Slider Grid.Row="1" Grid.Column="1" Value="{Binding Red, Mode=TwoWay}" Margin="5" Minimum="0" Maximum="255" VerticalAlignment="Center" />
+        <TextBox Grid.Row="2" Text="{Binding Green, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="5" PreviewTextInput="ValidateInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Slider Grid.Row="2" Grid.Column="1" Value="{Binding Green, Mode=TwoWay}" Margin="5" Minimum="0" Maximum="255" VerticalAlignment="Center" />
+        <TextBox Grid.Row="3" Text="{Binding Blue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="5" PreviewTextInput="ValidateInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Slider Grid.Row="3" Grid.Column="1" Value="{Binding Blue, Mode=TwoWay}" Margin="5" Minimum="0" Maximum="255" VerticalAlignment="Center" />
+    </Grid>
+</Window>

@@ -1,0 +1,81 @@
+﻿<Window x:Class="PhotoEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="Height" Width="525" MouseWheel="Window_MouseWheel">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Margin="5" Header="Przekształcenia punktowe">
+                <MenuItem Header="Dodaj" Click="MenuAdd_OnClick" />
+                <MenuItem Header="Odejmij" Click="MenuSubtract_OnClick" />
+                <MenuItem Header="Pomnóż" Click="MenuMultiply_OnClick" />
+                <MenuItem Header="Podziel" Click="MenuDivide_OnClick" />
+                <MenuItem Header="Zmień jasność" Click="MenuChangeBrightness_OnClick" />
+                <MenuItem Header="Skala szarości 1" Click="MenuGrayscale1_OnClick" />
+                <MenuItem Header="Skala szarości 2" Click="MenuGrayscale2_OnClick" />
+            </MenuItem>
+            <MenuItem Margin="5" Header="Filtry">
+                <MenuItem Header="Filtr uśredniający" Click="MenuLowPass_OnClick" />
+                <MenuItem Header="Filtr medianowy" Click="MenuMedian_OnClick" />
+                <MenuItem Header="Filtr wykrywający krawędzie" Click="MenuSobel_OnClick" />
+                <MenuItem Header="Filtr wyostrzający" Click="MenuHighPass_OnClick" />
+                <MenuItem Header="Filtr Gaussa" Click="MenuGauss_OnClick" />
+                <MenuItem Header="Filtr niestandardowy" Click="MenuCustom_OnClick" />
+            </MenuItem>
+            <MenuItem Margin="5" Header="Histogram">
+                <MenuItem Header="Rozszerzenie histogramu" Click="MenuStretchHistogram_OnClick" />
+                <MenuItem Header="Wyrównanie histogramu" Click="MenuEqualizeHistogram_OnClick" />
+            </MenuItem>
+            <MenuItem Margin="5" Header="Binaryzacja">
+                <MenuItem Header="Próg" Click="MenuThresholdBinarization_OnClick" />
+                <MenuItem Header="Procentowa selekcja czarnego" Click="MenuPercentageBinarization_OnClick" />
+                <MenuItem Header="Selekcja iteratywna średniej" Click="MenuMeanBinarization_OnClick" />
+                <MenuItem Header="Selekcja entropii" Click="MenuEntropyBinarization_OnClick" />
+                <MenuItem Header="Błąd minimalny" Click="MenuMinimumErrorBinarization_OnClick" />
+            </MenuItem>
+            <MenuItem Margin="5" Header="Filtry morfologiczne">
+                <MenuItem Header="Dylatacja" Click="MenuDilation_OnClick" />
+                <MenuItem Header="Erozja" Click="MenuErosion_OnClick" />
+                <MenuItem Header="Otwarcie" Click="MenuOpening_OnClick" />
+                <MenuItem Header="Domknięcie" Click="MenuClosing_OnClick" />
+                <MenuItem Header="Pocienianie" Click="MenuThin_OnClick" />
+                <MenuItem Header="Pogrubianie" Click="MenuThicken_OnClick" />
+            </MenuItem>
+        </Menu>
+        <Canvas x:Name="Canvas" Grid.Row="1" Grid.Column="1" Margin="5" Background="White">
+            <Canvas.RenderTransform>
+                <ScaleTransform x:Name="CanvasScale" />
+            </Canvas.RenderTransform>
+        </Canvas>
+        <StackPanel Grid.Row="1" Margin="5">
+            <GroupBox Header="Importuj" Padding="5">
+                <StackPanel>
+                    <Label x:Name="FileNameLabel" Margin="5" Padding="5" />
+                    <Button Margin="5" Padding="5" Click="ImportButton_OnClick">Przeglądaj</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Eksportuj" Padding="5">
+                <StackPanel>
+                    <Label Margin ="5 5 5 0">Jakość</Label>
+                    <TextBox x:Name="QualityTextBox" Margin="5 0 5 5" Padding="5" Text="{Binding Quality, Mode=TwoWay}" />
+                    <Slider x:Name="QualitySlider" Margin="5 0 5 5" Minimum="0" Maximum="100" Value="{Binding Quality, Mode=TwoWay}" />
+                    <Button Margin="5" Padding="5" Click="ExportButton_OnClick">Zapisz</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Przekształcenia">
+                <Button Margin="10" Padding="5" Click="Clear_OnClick">Wyczyść</Button>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

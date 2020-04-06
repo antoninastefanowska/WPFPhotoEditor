@@ -1,0 +1,17 @@
+﻿<Window x:Class="PhotoEditor.ValuePickWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoEditor"
+        mc:Ignorable="d"
+        Title="Wybierz wartość" SizeToContent="Height" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Padding="5" PreviewTextInput="ValidateInput" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Slider Grid.Column="1" Value="{Binding Value, Mode=TwoWay}" Margin="5" Minimum="{Binding Path=Minimum}" Maximum="{Binding Path=Maximum}" VerticalAlignment="Center" />
+    </Grid>
+</Window>
